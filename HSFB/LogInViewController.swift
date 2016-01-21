@@ -99,7 +99,7 @@ class LogInViewController: FormViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             
         } else if((responseString as! String) == "no") {
-            let alert = UIAlertController(title: "Awww :(", message: "You fucked up", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Awww :(", message: "Incorect username/password combination", preferredStyle: .Alert)
             
             alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
                 
