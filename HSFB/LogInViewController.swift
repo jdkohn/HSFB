@@ -12,7 +12,7 @@ import SwiftForms
 
 class LogInViewController: FormViewController {
     
-    
+    var user = Int()
     
     
     override func viewDidLoad() {
@@ -77,12 +77,21 @@ class LogInViewController: FormViewController {
             print("responseString = \(responseString)")
             
             dispatch_async(dispatch_get_main_queue()) {
-                self.sendAlert(responseString)
+                if(responseString == "no") {
+                    self.sendAlert(responseString as! String)
+                } else {
+                    self.user = self.getID(responseString as String)
+                    self.performSegueWithIdentifier("loggedIn", sender: nil)
+                }
             }
             
         }
         task.resume()
         
+    }
+    
+    func getID(rs: String) -> Int {
+        return Int(rs)!
     }
     
     
@@ -110,6 +119,13 @@ class LogInViewController: FormViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "loggedIn") {
+            let controller = segue.destinationViewController as! TeamsViewController
+            controller.user = self.user
+        }
+
+    }
     
     
     override func didReceiveMemoryWarning() {
