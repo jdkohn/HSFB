@@ -105,18 +105,19 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
                     b.append(i)
                 }
             }
+        
+            var temp = [NSDictionary]()
+            temp.append(players[g[0]])
+            temp.append(players[g[1]])
+            temp.append(players[f[0]])
+            temp.append(players[f[1]])
+            temp.append(players[x[0]])
+            temp.append(players[b[0]])
+            temp.append(players[b[1]])
+            
+            
+            players = temp
         }
-        var temp = [NSDictionary]()
-        temp.append(players[g[0]])
-        temp.append(players[g[1]])
-        temp.append(players[f[0]])
-        temp.append(players[f[1]])
-        temp.append(players[x[0]])
-        temp.append(players[b[0]])
-        temp.append(players[b[1]])
-        
-        
-        players = temp
     }
     
     
@@ -149,6 +150,15 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func move(sender: UIButton) {
+        print("Move" + String(sender.tag))
+        
+        if(sender.tag == 0) {
+            
+        }
     }
 
     

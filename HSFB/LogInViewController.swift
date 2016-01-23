@@ -9,13 +9,30 @@
 import Foundation
 import UIKit
 import SwiftForms
+import CoreData
 
 class LogInViewController: FormViewController {
     
     var user = Int()
+    var users = [NSManagedObject]()
     
     
     override func viewDidLoad() {
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        let error: NSError?
+        var fetchedResults = [NSManagedObject]()
+        do {
+            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        users = fetchedResults
+
+
+
         let form = FormDescriptor()
         
         form.title = "Log In"
@@ -81,6 +98,7 @@ class LogInViewController: FormViewController {
                     self.sendAlert(responseString as! String)
                 } else {
                     self.user = self.getID(responseString as String)
+                    self.storeUser(self.user)
                     self.performSegueWithIdentifier("loggedIn", sender: nil)
                 }
             }
@@ -132,6 +150,43 @@ class LogInViewController: FormViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    func storeUser(id: Int) {
+        //CoreData stuff
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let entity =  NSEntityDescription.entityForName("User",
+            inManagedObjectContext:
+            managedContext)
+        
+        
+        //creates new team object
+        let userObject = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext:managedContext)
+        userObject.setValue(id, forKey: "id")
+        userObject.setValue(self.form.formValues().valueForKey("username") as! String, forKey: "username")
+        
+        var error: NSError?
+        do {
+            try managedContext.save()
+        } catch var error1 as NSError {
+            error = error1
+            print("Could not save \(error), \(error?.userInfo)")
+        }
+        
+        self.users.insert(userObject, atIndex: self.users.count)
+        
+        
+        do {
+            try managedContext.save()
+        } catch _ {
+        }
+
+    }
+    
     
     
 }

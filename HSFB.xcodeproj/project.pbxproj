@@ -21,6 +21,10 @@
 		2C4E39FC1C515D92008B6F3A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */; };
 		2C4E39FE1C51C021008B6F3A /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39FD1C51C021008B6F3A /* PlayerCell.swift */; };
 		2C4E3A001C51C0CD008B6F3A /* TeamManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39FF1C51C0CD008B6F3A /* TeamManagerViewController.swift */; };
+		2C4E3A021C52F3A6008B6F3A /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E3A011C52F3A6008B6F3A /* UsersViewController.swift */; };
+		2C4E3A041C52F550008B6F3A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E3A031C52F550008B6F3A /* UserCell.swift */; };
+		2C4E3A061C52F66C008B6F3A /* useButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E3A051C52F66C008B6F3A /* useButton.png */; };
+		2C4E3A081C52FB2F008B6F3A /* plusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E3A071C52FB2F008B6F3A /* plusButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 		2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		2C4E39FD1C51C021008B6F3A /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		2C4E39FF1C51C0CD008B6F3A /* TeamManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamManagerViewController.swift; sourceTree = "<group>"; };
+		2C4E3A011C52F3A6008B6F3A /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		2C4E3A031C52F550008B6F3A /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		2C4E3A051C52F66C008B6F3A /* useButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = useButton.png; sourceTree = "<group>"; };
+		2C4E3A071C52FB2F008B6F3A /* plusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton.png; sourceTree = "<group>"; };
 		4B298282B0EB1D19280A2DB9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4D0F068EB512F0D6BC094BF5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BAF3818DB368D9F3FE55B35B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,11 +132,15 @@
 		2C1D31431C4FF0E900CE809C /* HSFB */ = {
 			isa = PBXGroup;
 			children = (
+				2C4E3A051C52F66C008B6F3A /* useButton.png */,
+				2C4E3A071C52FB2F008B6F3A /* plusButton.png */,
 				2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */,
 				2C1D31441C4FF0E900CE809C /* AppDelegate.swift */,
 				2C1D31461C4FF0E900CE809C /* ViewController.swift */,
 				2C1D31751C4FF6DB00CE809C /* LogInViewController.swift */,
+				2C4E3A011C52F3A6008B6F3A /* UsersViewController.swift */,
 				2C1D31481C4FF0E900CE809C /* Main.storyboard */,
+				2C4E3A031C52F550008B6F3A /* UserCell.swift */,
 				2C4E39FF1C51C0CD008B6F3A /* TeamManagerViewController.swift */,
 				2C4E39FD1C51C021008B6F3A /* PlayerCell.swift */,
 				2C4E39F91C515D27008B6F3A /* TeamCell.swift */,
@@ -275,7 +287,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1D31521C4FF0E900CE809C /* LaunchScreen.storyboard in Resources */,
+				2C4E3A061C52F66C008B6F3A /* useButton.png in Resources */,
 				2C1D314F1C4FF0E900CE809C /* Assets.xcassets in Resources */,
+				2C4E3A081C52FB2F008B6F3A /* plusButton.png in Resources */,
 				2C1D314A1C4FF0E900CE809C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +370,8 @@
 				2C1D31471C4FF0E900CE809C /* ViewController.swift in Sources */,
 				2C4E39FA1C515D27008B6F3A /* TeamCell.swift in Sources */,
 				2C1D31451C4FF0E900CE809C /* AppDelegate.swift in Sources */,
+				2C4E3A021C52F3A6008B6F3A /* UsersViewController.swift in Sources */,
+				2C4E3A041C52F550008B6F3A /* UserCell.swift in Sources */,
 				2C1D314D1C4FF0E900CE809C /* HSFB.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
