@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-class TeamsViewController: UITableViewController {
+class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var user = Int()
     var teams = [NSDictionary]()
     
     @IBOutlet var teamsTableView: UITableView!
+    @IBOutlet var rankings: UIButton!
     
     
     override func viewDidLoad() {
@@ -26,8 +27,20 @@ class TeamsViewController: UITableViewController {
         
         getTeams()
         
+        let starImage = (UIImage(named:"star.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
+        rankings.setImage(starImage, forState: .Normal)
+        rankings.tintColor = UIColor.greenColor()
+        rankings.addTarget(self, action: "toRankings:", forControlEvents: .TouchUpInside)
+        
+        teamsTableView.delegate = self
+        teamsTableView.dataSource = self
+        
         teamsTableView.reloadData()
 
+    }
+    
+    func toRankings(sender: UIButton) {
+        performSegueWithIdentifier("viewRankings", sender: nil)
     }
     
     func getTeams() {
@@ -71,11 +84,11 @@ class TeamsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teams.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("teamCell", forIndexPath: indexPath) as! TeamCell
 
         let currentDictionary = teams[indexPath.row]
