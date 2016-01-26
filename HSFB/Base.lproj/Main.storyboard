@@ -200,19 +200,19 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9P-LG-PTa">
                                                     <rect key="frame" x="32" y="8" width="181" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUf-Ge-uzN">
                                                     <rect key="frame" x="32" y="54" width="261" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCl-uT-pk5">
                                                     <rect key="frame" x="495" y="8" width="71" height="73"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -301,7 +301,7 @@
                                 </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Lx-iL-P1U">
-                                <rect key="frame" x="0.0" y="101" width="600" height="445"/>
+                                <rect key="frame" x="0.0" y="101" width="600" height="438"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" rowHeight="60" id="p9L-x7-XIi" customClass="PlayerCell" customModule="HSFB" customModuleProvider="target">
@@ -363,33 +363,49 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZA-r7-NfW">
+                                <rect key="frame" x="278" y="547" width="45" height="45"/>
+                                <state key="normal" image="plusButton.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-TW-Mhy">
+                                <rect key="frame" x="225" y="547" width="45" height="45"/>
+                                <state key="normal" image="standings.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kiz-vg-oKg" firstAttribute="leading" secondItem="FSe-9x-JfW" secondAttribute="trailing" constant="8" id="0TD-9H-J8p"/>
+                            <constraint firstItem="aZA-r7-NfW" firstAttribute="top" secondItem="5Lx-iL-P1U" secondAttribute="bottom" constant="8" id="0ct-b1-jzN"/>
                             <constraint firstItem="Uma-hG-bkh" firstAttribute="top" secondItem="5Lx-iL-P1U" secondAttribute="bottom" constant="54" id="2Zn-m1-HCk"/>
+                            <constraint firstItem="aZA-r7-NfW" firstAttribute="leading" secondItem="zEq-TW-Mhy" secondAttribute="trailing" constant="8" id="5c5-RC-zZ8"/>
                             <constraint firstItem="kiz-vg-oKg" firstAttribute="top" secondItem="efb-iH-uPz" secondAttribute="bottom" constant="8" id="5v2-0d-eZ9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Lx-iL-P1U" secondAttribute="trailing" constant="-20" id="Cvq-9x-B0v"/>
                             <constraint firstItem="5Lx-iL-P1U" firstAttribute="top" secondItem="kiz-vg-oKg" secondAttribute="bottom" constant="8" id="Fva-Jn-mnj"/>
+                            <constraint firstItem="Uma-hG-bkh" firstAttribute="top" secondItem="aZA-r7-NfW" secondAttribute="bottom" constant="8" id="JDa-Hm-XSU"/>
                             <constraint firstItem="9UK-D7-uLv" firstAttribute="trailing" secondItem="dM4-R8-7an" secondAttribute="trailingMargin" id="N5U-07-Dis"/>
                             <constraint firstItem="9UK-D7-uLv" firstAttribute="leading" secondItem="kiz-vg-oKg" secondAttribute="trailing" constant="8" id="Pfv-Ea-mc4"/>
                             <constraint firstItem="FSe-9x-JfW" firstAttribute="leading" secondItem="dM4-R8-7an" secondAttribute="leadingMargin" id="UB0-p6-Tdm"/>
                             <constraint firstItem="5Lx-iL-P1U" firstAttribute="leading" secondItem="dM4-R8-7an" secondAttribute="leadingMargin" constant="-20" id="ZFa-9W-A19"/>
+                            <constraint firstItem="zEq-TW-Mhy" firstAttribute="top" secondItem="5Lx-iL-P1U" secondAttribute="bottom" constant="8" id="aoS-To-FzB"/>
                             <constraint firstItem="5Lx-iL-P1U" firstAttribute="leading" secondItem="dM4-R8-7an" secondAttribute="leadingMargin" constant="-20" id="dxm-2s-3kH"/>
+                            <constraint firstItem="Uma-hG-bkh" firstAttribute="top" secondItem="zEq-TW-Mhy" secondAttribute="bottom" constant="8" id="gkb-E4-vv6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Lx-iL-P1U" secondAttribute="trailing" constant="-20" id="kq1-Op-mqo"/>
                             <constraint firstItem="Uma-hG-bkh" firstAttribute="top" secondItem="5Lx-iL-P1U" secondAttribute="bottom" id="lpw-Ul-ZPa"/>
                             <constraint firstItem="5Lx-iL-P1U" firstAttribute="top" secondItem="kiz-vg-oKg" secondAttribute="bottom" constant="8" id="nx5-A1-v6o"/>
+                            <constraint firstItem="aZA-r7-NfW" firstAttribute="centerX" secondItem="dM4-R8-7an" secondAttribute="centerX" id="oDP-Rh-64P"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Cvq-9x-B0v"/>
                                 <exclude reference="dxm-2s-3kH"/>
+                                <exclude reference="2Zn-m1-HCk"/>
                                 <exclude reference="lpw-Ul-ZPa"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="playersTable" destination="5Lx-iL-P1U" id="2DA-WI-aOm"/>
+                        <outlet property="plusButton" destination="aZA-r7-NfW" id="5AY-xb-BaP"/>
                         <segue destination="a49-y4-8kL" kind="show" identifier="addPlayer" id="JEU-s7-vaM"/>
                     </connections>
                 </viewController>
@@ -397,10 +413,10 @@
             </objects>
             <point key="canvasLocation" x="4436" y="229"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Players View Controller-->
         <scene sceneID="2f3-fg-JCQ">
             <objects>
-                <viewController id="a49-y4-8kL" sceneMemberID="viewController">
+                <viewController id="a49-y4-8kL" customClass="AddPlayersViewController" customModule="HSFB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xVF-a5-9Ad"/>
                         <viewControllerLayoutGuide type="bottom" id="h4L-B6-vck"/>
@@ -409,12 +425,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Player to Add:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-3A-tcK">
+                                <rect key="frame" x="0.0" y="72" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CnS-Aa-H67">
                                 <rect key="frame" x="0.0" y="101" width="600" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCell" rowHeight="62" id="KaV-8j-brL" customClass="AddCell" customModule="HSFB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="62"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KaV-8j-brL" id="xzt-U4-un3">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="61"/>
@@ -427,13 +449,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRR-yw-Tcw">
                                                     <rect key="frame" x="8" y="8" width="451" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJ2-W4-hKu">
                                                     <rect key="frame" x="467" y="8" width="57" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -459,24 +481,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Player to Add:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-3A-tcK">
-                                <rect key="frame" x="0.0" y="72" width="600" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="mLT-3A-tcK" secondAttribute="trailing" constant="-20" id="3hQ-Ut-8Az"/>
                             <constraint firstItem="mLT-3A-tcK" firstAttribute="top" secondItem="xVF-a5-9Ad" secondAttribute="bottom" constant="8" id="4hQ-W3-hDG"/>
+                            <constraint firstItem="CnS-Aa-H67" firstAttribute="top" secondItem="KPI-SJ-vrU" secondAttribute="topMargin" constant="31" id="8br-nN-VJN"/>
                             <constraint firstItem="mLT-3A-tcK" firstAttribute="leading" secondItem="KPI-SJ-vrU" secondAttribute="leadingMargin" constant="-20" id="JFA-rg-3fX"/>
                             <constraint firstItem="h4L-B6-vck" firstAttribute="top" secondItem="CnS-Aa-H67" secondAttribute="bottom" id="T9G-Au-EP5"/>
                             <constraint firstItem="CnS-Aa-H67" firstAttribute="leading" secondItem="KPI-SJ-vrU" secondAttribute="leadingMargin" constant="-20" id="anZ-l8-xoc"/>
+                            <constraint firstItem="CnS-Aa-H67" firstAttribute="top" secondItem="mLT-3A-tcK" secondAttribute="bottom" constant="8" id="kfJ-zW-SeA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CnS-Aa-H67" secondAttribute="trailing" constant="-20" id="pwX-Gg-tSd"/>
                             <constraint firstItem="CnS-Aa-H67" firstAttribute="top" secondItem="mLT-3A-tcK" secondAttribute="bottom" constant="8" id="qqY-gr-EDr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8br-nN-VJN"/>
+                                <exclude reference="qqY-gr-EDr"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="addTable" destination="CnS-Aa-H67" id="gft-Zj-YEO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEg-Lp-9f3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -578,6 +605,7 @@
     </scenes>
     <resources>
         <image name="plusButton.png" width="45" height="45"/>
+        <image name="standings.png" width="45" height="45"/>
         <image name="star.png" width="45" height="45"/>
         <image name="useButton.png" width="45" height="45"/>
     </resources>

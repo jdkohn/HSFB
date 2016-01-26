@@ -12,6 +12,7 @@ import UIKit
 class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var playersTable: UITableView!
+    @IBOutlet weak var plusButton: UIButton!
     
     var players = [NSDictionary]()
     var league = Int()
@@ -27,11 +28,21 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     playersTable.delegate = self
     playersTable.dataSource = self
     
+    plusButton.addTarget(self, action: "addPlayer:", forControlEvents: .TouchUpInside)
+    
     moving = false
     playerToMove = -1
     
-    getPlayers()
+    //getPlayers()
     
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        getPlayers()
+    }
+    
+    func addPlayer(sender: UIButton) {
+        performSegueWithIdentifier("addPlayer", sender: nil)
     }
     
     
@@ -303,7 +314,11 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+    if(segue.identifier == "addPlayer") {
+        let controller = segue.destinationViewController as! AddPlayersViewController
+        controller.league = league
+        controller.currTeam = team
+    }
     }
     
     
@@ -320,6 +335,8 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     
     print("!" + String(sender.tag))
     }
+    
+    
     
     
 }
