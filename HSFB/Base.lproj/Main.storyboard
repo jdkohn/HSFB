@@ -406,7 +406,9 @@
                     <connections>
                         <outlet property="playersTable" destination="5Lx-iL-P1U" id="2DA-WI-aOm"/>
                         <outlet property="plusButton" destination="aZA-r7-NfW" id="5AY-xb-BaP"/>
+                        <outlet property="standingsButton" destination="zEq-TW-Mhy" id="N9A-WT-xsh"/>
                         <segue destination="a49-y4-8kL" kind="show" identifier="addPlayer" id="JEU-s7-vaM"/>
+                        <segue destination="hSb-yv-4Fz" kind="show" identifier="viewStandings" id="F2M-Dz-2f7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egc-RL-uZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,11 +505,79 @@
                     </view>
                     <connections>
                         <outlet property="addTable" destination="CnS-Aa-H67" id="gft-Zj-YEO"/>
+                        <outlet property="instructionsLabel" destination="mLT-3A-tcK" id="jfh-Lp-Zju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEg-Lp-9f3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5296" y="270"/>
+            <point key="canvasLocation" x="5191" y="-489"/>
+        </scene>
+        <!--Standings View Controller-->
+        <scene sceneID="gko-Aw-ZIl">
+            <objects>
+                <tableViewController id="hSb-yv-4Fz" customClass="StandingsViewController" customModule="HSFB" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="KaK-sP-Tvo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="standingsCell" rowHeight="90" id="5XR-g0-6eV" customClass="StandingsCell" customModule="HSFB" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5XR-g0-6eV" id="XCu-Le-lKX">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COx-eS-l1s">
+                                            <rect key="frame" x="8" y="8" width="204" height="39"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Owner's Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-31-Pwm">
+                                            <rect key="frame" x="28" y="55" width="208" height="26"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-1u-Bts">
+                                            <rect key="frame" x="509" y="8" width="66" height="73"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Wn2-1u-Bts" secondAttribute="trailing" constant="18" id="0V8-gR-dmT"/>
+                                        <constraint firstItem="VyE-31-Pwm" firstAttribute="bottom" secondItem="XCu-Le-lKX" secondAttribute="bottomMargin" id="4LA-F1-VvU"/>
+                                        <constraint firstItem="VyE-31-Pwm" firstAttribute="leading" secondItem="XCu-Le-lKX" secondAttribute="leadingMargin" constant="20" id="6PN-uh-qXf"/>
+                                        <constraint firstItem="COx-eS-l1s" firstAttribute="leading" secondItem="XCu-Le-lKX" secondAttribute="leadingMargin" id="AFp-Pc-6pf"/>
+                                        <constraint firstItem="VyE-31-Pwm" firstAttribute="top" secondItem="COx-eS-l1s" secondAttribute="bottom" constant="8" id="K1C-NI-YPj"/>
+                                        <constraint firstItem="VyE-31-Pwm" firstAttribute="top" secondItem="COx-eS-l1s" secondAttribute="bottom" constant="8" id="fPG-9y-a15"/>
+                                        <constraint firstItem="Wn2-1u-Bts" firstAttribute="bottom" secondItem="XCu-Le-lKX" secondAttribute="bottomMargin" id="knL-vf-xby"/>
+                                        <constraint firstItem="Wn2-1u-Bts" firstAttribute="top" secondItem="XCu-Le-lKX" secondAttribute="topMargin" id="oz7-0X-iXs"/>
+                                        <constraint firstItem="COx-eS-l1s" firstAttribute="top" secondItem="XCu-Le-lKX" secondAttribute="topMargin" id="zMW-z6-Lhw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ownerNameLabel" destination="VyE-31-Pwm" id="luW-kt-LkK"/>
+                                    <outlet property="recordLabel" destination="Wn2-1u-Bts" id="3Ly-sN-l6m"/>
+                                    <outlet property="teamNameLabel" destination="COx-eS-l1s" id="Yk5-Sr-tLE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hSb-yv-4Fz" id="dkC-q3-2nq"/>
+                            <outlet property="delegate" destination="hSb-yv-4Fz" id="jcR-js-zQH"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="standingsTable" destination="KaK-sP-Tvo" id="nfN-15-eyb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvl-oL-WSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5241" y="218"/>
         </scene>
         <!--Rankings View Controller-->
         <scene sceneID="rgU-Oq-X7G">

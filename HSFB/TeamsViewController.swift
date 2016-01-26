@@ -124,6 +124,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let controller = segue.destinationViewController as! TeamManagerViewController
                 let currentDictionary = teams[indexPath.row]
                 
+                controller.teamName = currentDictionary.valueForKey("teamName") as! String
                 controller.user = self.user
                 controller.team = Int(currentDictionary.valueForKey("id") as! String)!
                 controller.league = Int(currentDictionary.valueForKey("league") as! String)!

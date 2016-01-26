@@ -13,11 +13,13 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var playersTable: UITableView!
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var standingsButton: UIButton!
     
     var players = [NSDictionary]()
     var league = Int()
     var team = Int()
     var user = Int()
+    var teamName = String()
     
     var moving = Bool()
     var playerToMove = Int()
@@ -25,16 +27,30 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.title = teamName
+        
     playersTable.delegate = self
     playersTable.dataSource = self
     
+    let plusImage = (UIImage(named:"plusButton.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
+    plusButton.setImage(plusImage, forState: .Normal)
+    plusButton.tintColor = UIColor.greenColor() 
     plusButton.addTarget(self, action: "addPlayer:", forControlEvents: .TouchUpInside)
+        
+    let standingsImage = (UIImage(named:"standings.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
+    standingsButton.setImage(standingsImage, forState: .Normal)
+    standingsButton.tintColor = UIColor.greenColor()
+    standingsButton.addTarget(self, action: "viewStandings:", forControlEvents: .TouchUpInside)
     
     moving = false
     playerToMove = -1
     
     //getPlayers()
     
+    }
+    
+    func viewStandings(sender: UIButton) {
+        performSegueWithIdentifier("viewStandings", sender: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -318,6 +334,10 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
         let controller = segue.destinationViewController as! AddPlayersViewController
         controller.league = league
         controller.currTeam = team
+    }
+    if(segue.identifier == "viewStandings") {
+        let controller = segue.destinationViewController as! StandingsViewController
+        controller.league = league
     }
     }
     

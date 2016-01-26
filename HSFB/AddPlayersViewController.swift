@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var addTable: UITableView!
     
     var freeAgents = [NSDictionary]()
@@ -27,6 +27,9 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Add Player"
+        instructionsLabel.text = "Select a Player to Add:"
         
         adding = true
         
@@ -281,6 +284,8 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
         playerToAdd = sender.tag
         adding = false
         addTable.reloadData()
+        self.title = "Drop Player"
+        instructionsLabel.text = "Select a Player to Drop:"
         
     }
     
