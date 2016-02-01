@@ -17,6 +17,23 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var usersTable: UITableView!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName:"User")
+        let error: NSError?
+        var fetchedResults = [NSManagedObject]()
+        do {
+            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Fetch failed: \(error.localizedDescription)")
+        }
+        users = fetchedResults
+        
+        usersTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,13 +49,26 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         users = fetchedResults
         
+        if(users.count == 0) {
+            performSegueWithIdentifier("addNewUser", sender: nil)
+        }
         
         usersTable.dataSource = self
         usersTable.delegate = self
         plusButton.addTarget(self, action: "addNewUser:", forControlEvents: .TouchUpInside)
         
         self.title = "Welcome!"
+        
+        configureNavBar()
     }
+    
+    
+        func configureNavBar() {
+        let blue = UIColor(red: 0.678, green: 0.847, blue: 0.901, alpha: 1.0)
+        
+        self.navigationController?.navigationBar.barTintColor = blue
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -72,6 +102,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         if(segue.identifier == "useUser") {
             let controller = segue.destinationViewController as! TeamsViewController
             controller.user = sender!.tag
+            controller.numBack = 2
         }
         
     }

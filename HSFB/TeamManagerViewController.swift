@@ -219,7 +219,9 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
             cell.moveButton.hidden = false
         } else {
             if(players[playerToMove]["currentPosition"] as! String == "G") {
-                if(players[indexPath.row]["currentPosition"] as! String == "F") {
+                if(players[indexPath.row]["currentPosition"] as! String == "G") {
+                    cell.moveButton.hidden = true
+                } else if(players[indexPath.row]["currentPosition"] as! String == "F") {
                     cell.moveButton.hidden = true
                 } else if(players[indexPath.row]["currentPosition"] as! String == "X") {
                     cell.moveButton.backgroundColor = UIColor.redColor()
@@ -227,24 +229,34 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
                     cell.moveButton.tag = indexPath.row
                     cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
                 } else if(players[indexPath.row]["currentPosition"] as! String == "B") {
-                    cell.moveButton.backgroundColor = UIColor.redColor()
-                    cell.moveButton.setTitle("Here", forState: .Normal)
-                    cell.moveButton.tag = indexPath.row
-                    cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                    if(players[indexPath.row]["position"] as! String == "G") {
+                        cell.moveButton.backgroundColor = UIColor.redColor()
+                        cell.moveButton.setTitle("Here", forState: .Normal)
+                        cell.moveButton.tag = indexPath.row
+                        cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                    } else {
+                        cell.moveButton.hidden = true
+                    }
                 }
             } else if(players[playerToMove]["currentPosition"] as! String == "F") {
                 if(players[indexPath.row]["currentPosition"] as! String == "G") {
                     cell.moveButton.hidden = true
+                } else if(players[indexPath.row]["currentPosition"] as! String == "F") {
+                    cell.moveButton.hidden = true
                 } else if(players[indexPath.row]["currentPosition"] as! String == "X") {
                     cell.moveButton.backgroundColor = UIColor.redColor()
                     cell.moveButton.setTitle("Here", forState: .Normal)
                     cell.moveButton.tag = indexPath.row
                     cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
                 } else if(players[indexPath.row]["currentPosition"] as! String == "B") {
-                    cell.moveButton.backgroundColor = UIColor.redColor()
-                    cell.moveButton.setTitle("Here", forState: .Normal)
-                    cell.moveButton.tag = indexPath.row
-                    cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                    if(players[indexPath.row]["position"] as! String == "F") {
+                        cell.moveButton.backgroundColor = UIColor.redColor()
+                        cell.moveButton.setTitle("Here", forState: .Normal)
+                        cell.moveButton.tag = indexPath.row
+                        cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                    } else {
+                        cell.moveButton.hidden = true
+                    }
                 }
             } else if(players[playerToMove]["currentPosition"] as! String == "X") {
                 
@@ -297,10 +309,7 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
                         cell.moveButton.tag = indexPath.row
                         cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
                     } else if(players[indexPath.row]["currentPosition"] as! String == "B") {
-                        cell.moveButton.backgroundColor = UIColor.redColor()
-                        cell.moveButton.setTitle("Here", forState: .Normal)
-                        cell.moveButton.tag = indexPath.row
-                        cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                        cell.moveButton.hidden = true
                     }
                     
                 } else {
@@ -318,10 +327,7 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
                         cell.moveButton.tag = indexPath.row
                         cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
                     } else if(players[indexPath.row]["currentPosition"] as! String == "B") {
-                        cell.moveButton.backgroundColor = UIColor.redColor()
-                        cell.moveButton.setTitle("Here", forState: .Normal)
-                        cell.moveButton.tag = indexPath.row
-                        cell.moveButton.addTarget(self, action: "here:", forControlEvents: .TouchUpInside)
+                        cell.moveButton.hidden = true
                     }
                 }
                 

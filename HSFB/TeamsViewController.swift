@@ -13,6 +13,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var user = Int()
     var teams = [NSDictionary]()
+    var numBack = Int()
     
     @IBOutlet var teamsTableView: UITableView!
     @IBOutlet var rankings: UIButton!
@@ -32,11 +33,19 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         rankings.tintColor = UIColor.greenColor()
         rankings.addTarget(self, action: "toRankings:", forControlEvents: .TouchUpInside)
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Plain, target: self, action: "toUsers:")
+        
+        
         teamsTableView.delegate = self
         teamsTableView.dataSource = self
         
         teamsTableView.reloadData()
 
+    }
+    
+    func toUsers(sender: UIBarButtonItem) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - numBack], animated: true);
     }
     
     func toRankings(sender: UIButton) {

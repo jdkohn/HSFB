@@ -38,6 +38,7 @@
 		2C5FE2A01C5447800053541D /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5FE29F1C5447800053541D /* RankingsViewController.swift */; };
 		2C5FE2A21C5448460053541D /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5FE2A11C5448460053541D /* RankingCell.swift */; };
 		2CA90D011C5456D30068571B /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA90D001C5456D30068571B /* star.png */; };
+		2CC00D7B1C5A95DD00B08191 /* capAndNeedle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC00D7A1C5A95DD00B08191 /* capAndNeedle.png */; };
 		2CEB981B1C568813009DE8D8 /* AddPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB981A1C568812009DE8D8 /* AddPlayersViewController.swift */; };
 		2CEB981D1C568B29009DE8D8 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB981C1C568B29009DE8D8 /* AddCell.swift */; };
 		2CF42FB71C55C81E0037E121 /* TeamManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF42FB61C55C81E0037E121 /* TeamManagerViewController.swift */; };
@@ -97,6 +98,7 @@
 		2C5FE29F1C5447800053541D /* RankingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
 		2C5FE2A11C5448460053541D /* RankingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
 		2CA90D001C5456D30068571B /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		2CC00D7A1C5A95DD00B08191 /* capAndNeedle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capAndNeedle.png; sourceTree = "<group>"; };
 		2CEB981A1C568812009DE8D8 /* AddPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayersViewController.swift; sourceTree = "<group>"; };
 		2CEB981C1C568B29009DE8D8 /* AddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		2CF42FB61C55C81E0037E121 /* TeamManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamManagerViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				2C5454D31C582E1A00B2EDA1 /* flexButton.png */,
+				2CC00D7A1C5A95DD00B08191 /* capAndNeedle.png */,
 				2C5454D11C582E1400B2EDA1 /* guardButton.png */,
 				2C5454CD1C582DE500B2EDA1 /* benchButton.png */,
 				2C5454DF1C593CA400B2EDA1 /* teamsButton.png */,
@@ -339,6 +342,7 @@
 				2C4E3A061C52F66C008B6F3A /* useButton.png in Resources */,
 				2C1D314F1C4FF0E900CE809C /* Assets.xcassets in Resources */,
 				2C5454D01C582DE900B2EDA1 /* forwardButton.png in Resources */,
+				2CC00D7B1C5A95DD00B08191 /* capAndNeedle.png in Resources */,
 				2C5454C81C573E5400B2EDA1 /* standings.png in Resources */,
 				2C4E3A081C52FB2F008B6F3A /* plusButton.png in Resources */,
 				2C1D314A1C4FF0E900CE809C /* Main.storyboard in Resources */,
