@@ -13,6 +13,7 @@ import CoreData
 class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var users = [NSManagedObject]()
+    var user = Int()
     
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var usersTable: UITableView!
@@ -63,7 +64,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-        func configureNavBar() {
+    func configureNavBar() {
         let blue = UIColor(red: 0.678, green: 0.847, blue: 0.901, alpha: 1.0)
         
         self.navigationController?.navigationBar.barTintColor = blue
@@ -91,6 +92,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     
     func use(sender: UIButton) {
+        user = sender.tag
         performSegueWithIdentifier("useUser", sender: sender)
     }
     
@@ -101,7 +103,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "useUser") {
             let controller = segue.destinationViewController as! TeamsViewController
-            controller.user = sender!.tag
+            controller.user = user
             controller.numBack = 2
         }
         

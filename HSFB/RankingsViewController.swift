@@ -64,6 +64,9 @@ class RankingsViewController: UITableViewController {
     }
     
     func getRankings() {
+        
+        if(Reachability.isConnectedToNetwork()) {
+        
         var responseString = "" as! NSString
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/swiftgetrankings.php")!)
@@ -91,6 +94,15 @@ class RankingsViewController: UITableViewController {
             
         }
         task.resume()
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+                
+            }))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func parsePlayers(rs: String) {
@@ -111,15 +123,5 @@ class RankingsViewController: UITableViewController {
             self.players.append(pd)
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "useUser") {
-            let controller = segue.destinationViewController as! TeamsViewController
-            controller.user = sender!.tag
-        }
-        
-    }
-    
-    
     
 }

@@ -81,41 +81,50 @@ class LogInViewController: FormViewController {
             
         } else {
             
-            let username = self.form.formValues().valueForKey("username") as! String
-            let password = self.form.formValues().valueForKey("password") as! String
+            if(Reachability.isConnectedToNetwork()) {
             
-            var responseString = "" as! NSString
-            
-            let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/authenticateuser.php")!)
-            request.HTTPMethod = "POST"
-            let postString = "username=" + username + "&password=" + password + "&swift=McLovin"
-            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-                guard error == nil && data != nil else {            // check for fundamental networking error
-                    print("error=\(error)")
-                    return
-                }
+                let username = self.form.formValues().valueForKey("username") as! String
+                let password = self.form.formValues().valueForKey("password") as! String
                 
-                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
-                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    print("response = \(response)")
-                }
+                var responseString = "" as! NSString
                 
-                responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-                print("responseString = \(responseString)")
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    if(responseString == "no") {
-                        self.sendAlert(responseString as! String)
-                    } else {
-                        self.user = self.getID(responseString as String)
-                        self.storeUser(self.user)
-                        self.performSegueWithIdentifier("loggedIn", sender: nil)
+                let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/authenticateuser.php")!)
+                request.HTTPMethod = "POST"
+                let postString = "username=" + username + "&password=" + password + "&swift=McLovin"
+                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                    guard error == nil && data != nil else {            // check for fundamental networking error
+                        print("error=\(error)")
+                        return
                     }
+                    
+                    if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
+                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                        print("response = \(response)")
+                    }
+                    
+                    responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                    print("responseString = \(responseString)")
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        if(responseString == "no") {
+                            self.sendAlert(responseString as! String)
+                        } else {
+                            self.user = self.getID(responseString as String)
+                            self.storeUser(self.user)
+                            self.performSegueWithIdentifier("loggedIn", sender: nil)
+                        }
+                    }
+                    
                 }
+                task.resume()
                 
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
-            task.resume()
             
         
         }

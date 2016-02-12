@@ -29,6 +29,7 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     var numForwards = Int()
     var numGuards = Int()
     
+    var onePressed = Bool()
     
     var moving = Bool()
     var playerToMove = Int()
@@ -103,6 +104,7 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
             print("responseString = \(responseString)")
             
             dispatch_async(dispatch_get_main_queue()) {
+                self.onePressed = false
                 self.parsePlayers(responseString as! String)
                 self.bottomRightButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
                 self.bottomLeftButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
@@ -355,9 +357,9 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     func configureBottomButtons(position: String, index: Int) {
         
         bottomRightButton.tintColor = UIColor.greenColor()
-        bottomRightButton.backgroundColor = UIColor.whiteColor()
+        //bottomRightButton.backgroundColor = UIColor.whiteColor()
         bottomLeftButton.tintColor = UIColor.greenColor()
-        bottomLeftButton.backgroundColor = UIColor.whiteColor()
+        //bottomLeftButton.backgroundColor = UIColor.whiteColor()
         
         
         let gButton = (UIImage(named:"guardButton.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
@@ -503,50 +505,86 @@ class TeamManagerViewController: UIViewController, UITableViewDelegate, UITableV
     
     func here(sender: UIButton) {
         
+        if(!onePressed) {
+            onePressed = true
+            print("!!")
         let player = players[playerToMove]["id"] as! String
         let player2 = players[sender.tag]["id"] as! String
         let currentPos = playerToMove
         let newPos = sender.tag
         
-        
-        print("playerOne=" + String(player) + "&league=" + String(self.league) + "&playerTwo=" + String(player2))
-        
-        
         moving = false
         playerToMove = -1
         
+        if(Reachability.isConnectedToNetwork()) {
         
-        var responseString = "" as! NSString
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/swiftmoveplayers.php")!)
-        request.HTTPMethod = "POST"
-        let postString = "playerOne=" + String(player) + "&league=" + String(self.league) + "&playerTwo=" + String(player2)
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            guard error == nil && data != nil else {            // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
+            var responseString = "" as! NSString
             
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-            print("responseString = \(responseString)")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                self.getPlayers()
+            let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/swiftmoveplayers.php")!)
+            request.HTTPMethod = "POST"
+            let postString = "playerOne=" + String(player) + "&league=" + String(self.league) + "&playerTwo=" + String(player2)
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                guard error == nil && data != nil else {            // check for fundamental networking error
+                    print("error=\(error)")
+                    return
+                }
                 
-                self.bottomRightButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
-                self.bottomLeftButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
-                self.bottomRightButton.hidden = true
-                self.bottomLeftButton.hidden = true
+                if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(response)")
+                }
+                
+                responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                print("responseString = \(responseString)")
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                    if((responseString as! String).rangeOfString("network connection was lost") == nil) {
+                        self.getPlayers()
+                        
+                        self.bottomRightButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+                        self.bottomLeftButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+                        self.bottomRightButton.hidden = true
+                        self.bottomLeftButton.hidden = true
+                    } else {
+                        let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+                            
+                        }))
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                        self.playersTable.reloadData()
+                        self.bottomRightButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+                        self.bottomLeftButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+                        self.bottomRightButton.hidden = true
+                        self.bottomLeftButton.hidden = true
+                        self.onePressed = false
+                    }
+                }
+                
             }
+            task.resume()
+        } else {
+            
+            let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+            
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+                
+            }))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+            self.playersTable.reloadData()
+            self.bottomRightButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+            self.bottomLeftButton.removeTarget(self, action: "moveOne:", forControlEvents: .TouchUpInside)
+            self.bottomRightButton.hidden = true
+            self.bottomLeftButton.hidden = true
+            onePressed = false
             
         }
-        task.resume()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -19,6 +19,7 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
     var user = Int()
     var currTeam = Int()
     
+    var pressedOnce = Bool()
     
     var playerToAdd = Int()
     
@@ -39,10 +40,16 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         //get free agents
-        
-        getTeam()
-        
-        getFreeAgents()
+        if(Reachability.isConnectedToNetwork()) {
+            getTeam()
+            
+            getFreeAgents()
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         
         addTable.reloadData()
     }
@@ -236,15 +243,13 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
                         cell.pointsLabel.text = fppg
                     }
                 }
-                    
-                    
-                    
-
                 let addButton = (UIImage(named:"plusButton.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
                 cell.addButton.setImage(addButton, forState: .Normal)
                 cell.addButton.tintColor = UIColor.greenColor()
                 cell.addButton.tag = Int(freeAgents[indexPath.row]["id"] as! String)!
                 cell.addButton.addTarget(self, action: "addPlayer:", forControlEvents: .TouchUpInside)
+                    
+                    
             } else {
                 cell.nameLabel.text = (team[indexPath.row]["name"] as! String) + ", " + (team[indexPath.row]["position"] as! String)
                     
@@ -267,10 +272,7 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
                     
-                    
-                    
-                    
-                    
+
                 let dropButton = (UIImage(named:"dropButton.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate))!
                 cell.addButton.setImage(dropButton, forState: .Normal)
                 cell.addButton.tintColor = UIColor.redColor()
@@ -290,34 +292,46 @@ class AddPlayersViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func dropPlayer(sender: UIButton) {
-        
-        var responseString = "" as! NSString
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/swiftadddrop.php")!)
-        request.HTTPMethod = "POST"
-        let postString = "league=" + String(self.league) + "&team=" + String(self.currTeam) + "&add=" + String(self.playerToAdd) + "&drop=" + String(sender.tag)
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            guard error == nil && data != nil else {            // check for fundamental networking error
-                print("error=\(error)")
-                return
+        if(!pressedOnce) {
+            pressedOnce = true
+            if(Reachability.isConnectedToNetwork()) {
+                var responseString = "" as! NSString
+                
+                let request = NSMutableURLRequest(URL: NSURL(string: "https://www.metrofantasyball.com/swiftadddrop.php")!)
+                request.HTTPMethod = "POST"
+                let postString = "league=" + String(self.league) + "&team=" + String(self.currTeam) + "&add=" + String(self.playerToAdd) + "&drop=" + String(sender.tag)
+                request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+                let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+                    guard error == nil && data != nil else {            // check for fundamental networking error
+                        print("error=\(error)")
+                        return
+                    }
+                    
+                    if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
+                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                        print("response = \(response)")
+                    }
+                    
+                    responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
+                    print("responseString = \(responseString)")
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+                        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+                    }
+                    
+                }
+                task.resume()
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "You are no longer connected to the Internet", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: { (action) -> Void in
+                    let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+                    self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+                }))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
             }
-            
-            if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {  // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)!
-            print("responseString = \(responseString)")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
-            }
-            
         }
-        task.resume()
 
     }
     

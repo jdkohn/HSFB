@@ -37,6 +37,7 @@
 		2C5454E01C593CA400B2EDA1 /* teamsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5454DF1C593CA400B2EDA1 /* teamsButton.png */; };
 		2C5FE2A01C5447800053541D /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5FE29F1C5447800053541D /* RankingsViewController.swift */; };
 		2C5FE2A21C5448460053541D /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5FE2A11C5448460053541D /* RankingCell.swift */; };
+		2C8AE0911C6042E7003655F2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8AE0901C6042E7003655F2 /* Reachability.swift */; };
 		2CA90D011C5456D30068571B /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA90D001C5456D30068571B /* star.png */; };
 		2CC00D7B1C5A95DD00B08191 /* capAndNeedle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CC00D7A1C5A95DD00B08191 /* capAndNeedle.png */; };
 		2CEB981B1C568813009DE8D8 /* AddPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB981A1C568812009DE8D8 /* AddPlayersViewController.swift */; };
@@ -97,6 +98,7 @@
 		2C5454DF1C593CA400B2EDA1 /* teamsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teamsButton.png; sourceTree = "<group>"; };
 		2C5FE29F1C5447800053541D /* RankingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
 		2C5FE2A11C5448460053541D /* RankingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
+		2C8AE0901C6042E7003655F2 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2CA90D001C5456D30068571B /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		2CC00D7A1C5A95DD00B08191 /* capAndNeedle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = capAndNeedle.png; sourceTree = "<group>"; };
 		2CEB981A1C568812009DE8D8 /* AddPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayersViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				2C5454CB1C57E2CA00B2EDA1 /* StandingsCell.swift */,
 				2C5454DD1C5931A200B2EDA1 /* OtherTeamsViewController.swift */,
 				2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */,
+				2C8AE0901C6042E7003655F2 /* Reachability.swift */,
 				2C1D31441C4FF0E900CE809C /* AppDelegate.swift */,
 				2C1D31461C4FF0E900CE809C /* ViewController.swift */,
 				2C1D31751C4FF6DB00CE809C /* LogInViewController.swift */,
@@ -301,6 +304,7 @@
 				TargetAttributes = {
 					2C1D31401C4FF0E900CE809C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = J44PM8Q84B;
 					};
 					2C1D31571C4FF0E900CE809C = {
 						CreatedOnToolsVersion = 7.2;
@@ -425,6 +429,7 @@
 			files = (
 				2C1D31761C4FF6DB00CE809C /* LogInViewController.swift in Sources */,
 				2C4E39FC1C515D92008B6F3A /* TeamsViewController.swift in Sources */,
+				2C8AE0911C6042E7003655F2 /* Reachability.swift in Sources */,
 				2CEB981B1C568813009DE8D8 /* AddPlayersViewController.swift in Sources */,
 				2C5FE2A21C5448460053541D /* RankingCell.swift in Sources */,
 				2C5454DE1C5931A200B2EDA1 /* OtherTeamsViewController.swift in Sources */,
@@ -583,10 +588,12 @@
 			baseConfigurationReference = 4B298282B0EB1D19280A2DB9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HSFB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jk.HSFB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -595,10 +602,12 @@
 			baseConfigurationReference = 4D0F068EB512F0D6BC094BF5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HSFB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jk.HSFB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
