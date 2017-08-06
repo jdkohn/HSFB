@@ -18,6 +18,8 @@
 		2C1D315D1C4FF0E900CE809C /* HSFBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D315C1C4FF0E900CE809C /* HSFBTests.swift */; };
 		2C1D31681C4FF0E900CE809C /* HSFBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D31671C4FF0E900CE809C /* HSFBUITests.swift */; };
 		2C1D31761C4FF6DB00CE809C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D31751C4FF6DB00CE809C /* LogInViewController.swift */; };
+		2C4620BE1C908F0B0064EDDA /* BaseballTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4620BD1C908F0B0064EDDA /* BaseballTeamVC.swift */; };
+		2C4620C01C90916F0064EDDA /* BaseballPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4620BF1C90916F0064EDDA /* BaseballPlayerCell.swift */; };
 		2C4E39FA1C515D27008B6F3A /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39F91C515D27008B6F3A /* TeamCell.swift */; };
 		2C4E39FC1C515D92008B6F3A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */; };
 		2C4E39FE1C51C021008B6F3A /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E39FD1C51C021008B6F3A /* PlayerCell.swift */; };
@@ -79,6 +81,8 @@
 		2C1D31671C4FF0E900CE809C /* HSFBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSFBUITests.swift; sourceTree = "<group>"; };
 		2C1D31691C4FF0E900CE809C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C1D31751C4FF6DB00CE809C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		2C4620BD1C908F0B0064EDDA /* BaseballTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseballTeamVC.swift; sourceTree = "<group>"; };
+		2C4620BF1C90916F0064EDDA /* BaseballPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseballPlayerCell.swift; sourceTree = "<group>"; };
 		2C4E39F91C515D27008B6F3A /* TeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		2C4E39FB1C515D92008B6F3A /* TeamsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		2C4E39FD1C51C021008B6F3A /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				2C1D31751C4FF6DB00CE809C /* LogInViewController.swift */,
 				2C4E3A011C52F3A6008B6F3A /* UsersViewController.swift */,
 				2C1D31481C4FF0E900CE809C /* Main.storyboard */,
+				2C4620BF1C90916F0064EDDA /* BaseballPlayerCell.swift */,
+				2C4620BD1C908F0B0064EDDA /* BaseballTeamVC.swift */,
 				2C5454D91C59315700B2EDA1 /* OtherTeamCell.swift */,
 				2CEB981C1C568B29009DE8D8 /* AddCell.swift */,
 				2CF42FB61C55C81E0037E121 /* TeamManagerViewController.swift */,
@@ -428,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1D31761C4FF6DB00CE809C /* LogInViewController.swift in Sources */,
+				2C4620BE1C908F0B0064EDDA /* BaseballTeamVC.swift in Sources */,
 				2C4E39FC1C515D92008B6F3A /* TeamsViewController.swift in Sources */,
 				2C8AE0911C6042E7003655F2 /* Reachability.swift in Sources */,
 				2CEB981B1C568813009DE8D8 /* AddPlayersViewController.swift in Sources */,
@@ -446,6 +453,7 @@
 				2C1D314D1C4FF0E900CE809C /* HSFB.xcdatamodeld in Sources */,
 				2CF42FB71C55C81E0037E121 /* TeamManagerViewController.swift in Sources */,
 				2C5454CA1C57E17600B2EDA1 /* StandingsViewController.swift in Sources */,
+				2C4620C01C90916F0064EDDA /* BaseballPlayerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
